@@ -1,0 +1,1 @@
+# Php Error page generator for Apache

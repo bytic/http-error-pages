@@ -1,0 +1,34 @@
+{
+  "name": "bytic/http-error-pages",
+  "type": "library",
+  "description": "Php Error page generator for Apache",
+  "homepage": "https://github.com/bytic/http-error-pages",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Gabriel Solomon",
+      "email": "hello@gabrielsolomon.ro"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "ByTIC\\HttpErrorPages\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ByTIC\\HttpErrorPages\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "php": "^7.0",
+    "twig/twig": "^2.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.2",
+    "mockery/mockery": "^1.1"
+  },
+  "scripts": {
+    "build": "ByTIC\\HttpErrorPages\\Composer\\ScriptHandler::build"
+  }
+}
