@@ -3,6 +3,7 @@
 namespace ByTIC\HttpErrorPages\Composer;
 
 use ByTIC\HttpErrorPages\Generator\Compiler;
+use ByTIC\HttpErrorPages\Generator\Config;
 use Composer\Script\Event;
 use Composer\Installer\PackageEvent;
 
@@ -14,13 +15,17 @@ class ScriptHandler
 {
     public static function build(Event $event)
     {
-        $IO = $event->getIO();
+        $terminal = $event->getIO();
+
+        Config::initFromComposer($event->getComposer());
+
         $pages = Compiler::generate();
         foreach ($pages as $code => $path) {
             $message = '..[' . $code . ']';
             $message .= $path ? ' generated path ['. $path . ']': ' not generated';
-            $IO->write($message);
+            $terminal->write($message);
         }
-        $IO->write(' ... <info>Files generated</info>');
+
+        $terminal->write(' ... <info>Files generated</info>');
     }
 }

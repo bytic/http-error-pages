@@ -28,6 +28,7 @@ class Compiler
 
     /**
      * @param string $code
+     * @return bool|string
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
@@ -35,10 +36,10 @@ class Compiler
     public static function generateForCode($code)
     {
         if (!Pages::canGeneratePage($code)) {
-            return;
+            return false;
         }
 
-        $path = Path::dist('/' . $code . '.html');
+        $path = Config::distPath('/' . $code . '.html');
         file_put_contents(
             $path,
             View::render('/pages/' . $code . '.html.twig', static::generateForCodeVariables($code))
