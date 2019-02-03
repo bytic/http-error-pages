@@ -6,7 +6,7 @@
 <body>
 <div class="container vertical-center">
     <div class="row justify-content-center">
-        <div class="col-sm-6">
+        <div class="col-sm-5">
             <h3>{{ statusCode }}</h3>
             <h1 class="text-jumbo text-ginormous">
                 {{ statusText|default('Oops!') }}
@@ -19,7 +19,9 @@
             {{ instructionHeader|default('Here are some helpful links instead:') }}
             {{ include('modules/links.html.twig') }}
         </div>
+        <div class="col-sm-1">&nbsp;</div>
         <div class="col-sm-4">
+            <h3>&nbsp;</h3>
             {{ include('modules/svg.html.twig') }}
         </div>
     </div>
