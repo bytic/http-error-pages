@@ -1,5 +1,9 @@
 <ul class="list-unstyled">
-    <li><a href="/">Home</a></li>
-    <li><a href="/search">Search</a></li>
-    <li><a href="/help">Help</a></li>
+    {% for label,url in suggestion_links %}
+        <li>
+            <a href="{{ url|raw }}">
+                {{ label }}
+            </a>
+        </li>
+    {% endfor %}
 </ul>

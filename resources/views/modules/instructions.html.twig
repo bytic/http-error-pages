@@ -1,0 +1,4 @@
+{% if suggestion_links.length > 0 %}
+    {{ instructionHeader|default('Here are some helpful links instead:') }}
+    {{ include('modules/links.html.twig') }}
+{% endif %}

@@ -1,6 +1,6 @@
 <?php
 
-namespace ByTIC\HttpErrorPages\Pages;
+namespace ByTIC\HttpErrorPages\Content;
 
 use ByTIC\HttpErrorPages\Utility\Path;
 

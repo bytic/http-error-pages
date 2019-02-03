@@ -32,5 +32,9 @@
     "extra": {
         "http-error-pages": {
             "dist_path": "/public/http-errors"
+            "suggestion_links" : {
+                "Home": "https://mydomain.com/",
+                "Support": "mailto:support@mydomain.com"
+            }
         }
     }

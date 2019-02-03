@@ -2,7 +2,8 @@
 
 namespace ByTIC\HttpErrorPages\Generator;
 
-use ByTIC\HttpErrorPages\Pages\Pages;
+use ByTIC\HttpErrorPages\Content\Links;
+use ByTIC\HttpErrorPages\Content\Pages;
 use ByTIC\HttpErrorPages\Utility\Languages;
 use ByTIC\HttpErrorPages\Utility\Path;
 
@@ -56,6 +57,7 @@ class Compiler
     {
         $data = [];
         $data['statusCode'] = $code;
+        $data['suggestion_links'] = Links::get();
         $languageData = Languages::forCode();
         if (is_array($languageData)) {
             $data = array_merge($data, $languageData['errorPages'][$code]);
