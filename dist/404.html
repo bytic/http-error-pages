@@ -5,36 +5,86 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 
-<title></title>
+<title>Not found</title>
 
 <!-- Bootstrap core CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
       integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 
-<style></style>
+<style>
+
+    html, body {
+        height: 100%;
+    }
+
+    .vertical-center {
+        min-height: 100%; /* Fallback for browsers do NOT support vh unit */
+        min-height: 100vh; /* These two lines are counted as one :-)       */
+
+        display: flex;
+        align-items: center;
+    }
+
+    h1 {
+        font-size: 70px;
+        font-weight: bold;
+        font-style: normal;
+        font-stretch: normal;
+        letter-spacing: -3.5px;
+        color: #162944;
+    }
+
+    h2 {
+        font-size: 32px;
+        line-height: 1.38;
+        font-weight: normal;
+        letter-spacing: -0.5px;
+        color: #162944;
+        margin-bottom: 30px;
+    }
+
+    h3 {
+        font-size: 42px;
+        line-height: 1.38;
+        font-weight: normal;
+        letter-spacing: -0.5px;
+        color: #9c9c9c;
+        margin-bottom: 20px;
+    }
+
+    .helpful-links a {
+        font-size: 14px;
+        line-height: 1.43;
+        letter-spacing: -0.2px;
+        color: #224bc5;
+        font-weight: 500;
+    }
+</style>
 </head>
 <body>
-<div class="container">
+<div class="container vertical-center">
     <div class="row justify-content-center">
-        <div class="col-sm-5 col">
-            <h1 class="text-jumbo text-ginormous">Oops!</h1>
-            <h2>We can't seem to find the page you're looking for.</h2>
-            <h6>Error code: 404</h6>
+        <div class="col-sm-6">
+            <h3>404</h3>
+            <h1 class="text-jumbo text-ginormous">
+                Page not found, sorry
+            </h1>
+            <h2>
+                The page you requested was <strong>not found</strong> on our servers.
+            </h2>
+            <hr style="background-color: rgb(130, 119, 201);">
+
+            Please follow these steps to get back on track:
             <ul class="list-unstyled">
-                <li>Here are some helpful links instead:</li>
-                <li><a href="/">Home</a></li>
-                <li><a href="/search">Search</a></li>
-                <li><a href="/help">Help</a></li>
-                <li><a href="/help/getting-started/how-to-travel">Traveling on Airbnb</a></li>
-                <li><a href="/info/why_host">Hosting on Airbnb</a></li>
-                <li><a href="/trust">Trust &amp; Safety</a></li>
-                <li><a href="/sitemaps">Sitemap</a></li>
-            </ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/search">Search</a></li>
+    <li><a href="/help">Help</a></li>
+</ul>
         </div>
-        <div class="col-sm-5">
+        <div class="col-sm-4">
             <img src="https://a0.muscache.com/airbnb/static/error_pages/404-Airbnb_final-d652ff855b1335dd3eedc3baa8dc8b69.gif"
-                 width="313" height="428" alt="Girl has dropped her ice cream.">
+     width="313" height="428" alt="Girl has dropped her ice cream.">
         </div>
     </div>
 </div>

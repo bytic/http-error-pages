@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 
-<title>{{ titles[defaultLanguageCode] }}</title>
+<title>{{ title }}</title>
 
 <!-- Bootstrap core CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
@@ -10,13 +10,25 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 
 <style>
+
+    html, body {
+        height: 100%;
+    }
+
+    .vertical-center {
+        min-height: 100%; /* Fallback for browsers do NOT support vh unit */
+        min-height: 100vh; /* These two lines are counted as one :-)       */
+
+        display: flex;
+        align-items: center;
+    }
+
     h1 {
-        font-size: 120px;
+        font-size: 70px;
         font-weight: bold;
         font-style: normal;
         font-stretch: normal;
-        line-height: 0.73;
-        letter-spacing: -5.5px;
+        letter-spacing: -3.5px;
         color: #162944;
     }
 
@@ -30,12 +42,12 @@
     }
 
     h3 {
-        font-size: 32px;
+        font-size: 42px;
         line-height: 1.38;
         font-weight: normal;
         letter-spacing: -0.5px;
-        color: #162944;
-        margin-bottom: 30px;
+        color: #9c9c9c;
+        margin-bottom: 20px;
     }
 
     .helpful-links a {

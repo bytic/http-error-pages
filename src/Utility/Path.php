@@ -43,4 +43,13 @@ class Path
     {
         return static::resources(DIRECTORY_SEPARATOR . 'views' . $path);
     }
+
+    /**
+     * @param null|string $path
+     * @return string
+     */
+    public static function languages($path = null)
+    {
+        return static::resources(DIRECTORY_SEPARATOR . 'languages' . $path);
+    }
 }

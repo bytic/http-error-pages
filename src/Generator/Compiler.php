@@ -3,6 +3,7 @@
 namespace ByTIC\HttpErrorPages\Generator;
 
 use ByTIC\HttpErrorPages\Pages\Pages;
+use ByTIC\HttpErrorPages\Utility\Languages;
 use ByTIC\HttpErrorPages\Utility\Path;
 
 /**
@@ -27,7 +28,6 @@ class Compiler
 
     /**
      * @param string $code
-     * @return void
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
@@ -37,15 +37,30 @@ class Compiler
         if (!Pages::canGeneratePage($code)) {
             return;
         }
-        $data = [];
-        $data['statusCode'] = $code;
 
         $path = Path::dist('/' . $code . '.html');
         file_put_contents(
             $path,
-            View::render('/pages/' . $code . '.html.twig', $data)
+            View::render('/pages/' . $code . '.html.twig', static::generateForCodeVariables($code))
         );
 
         return $path;
+    }
+
+    /**
+     * @param $code
+     * @return array
+     */
+    protected static function generateForCodeVariables($code)
+    {
+        $data = [];
+        $data['statusCode'] = $code;
+        $languageData = Languages::forCode();
+        if (is_array($languageData)) {
+            $data = array_merge($data, $languageData['errorPages'][$code]);
+            unset($languageData['errorPages']);
+            $data = array_merge($data, $languageData);
+        }
+        return $data;
     }
 }

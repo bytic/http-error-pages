@@ -1,34 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {{ include('head.html.twig') }}
+    {{ include('modules/head.html.twig') }}
 </head>
 <body>
-<div class="container">
+<div class="container vertical-center">
     <div class="row justify-content-center">
-        <div class="col-sm-5 col">
-            <h3>404</h3>
-            <h1 class="text-jumbo text-ginormous">Oops!</h1>
-            <h2>We can't seem to find the page you're looking for.</h2>
+        <div class="col-sm-6">
+            <h3>{{ statusCode }}</h3>
+            <h1 class="text-jumbo text-ginormous">
+                {{ statusText|default('Oops!') }}
+            </h1>
+            <h2>
+                {{ description|default('You have found our error page')|raw }}
+            </h2>
             <hr style="background-color: rgb(130, 119, 201);">
-            <ul class="list-unstyled">
-                <li>Here are some helpful links instead:</li>
-                <li><a href="/">Home</a></li>
-                <li><a href="/search">Search</a></li>
-                <li><a href="/help">Help</a></li>
-                <li><a href="/help/getting-started/how-to-travel">Traveling on Airbnb</a></li>
-                <li><a href="/info/why_host">Hosting on Airbnb</a></li>
-                <li><a href="/trust">Trust &amp; Safety</a></li>
-                <li><a href="/sitemaps">Sitemap</a></li>
-            </ul>
+
+            {{ instructionHeader|default('Here are some helpful links instead:') }}
+            {{ include('modules/links.html.twig') }}
         </div>
-        <div class="col-sm-5">
-            <img src="https://a0.muscache.com/airbnb/static/error_pages/404-Airbnb_final-d652ff855b1335dd3eedc3baa8dc8b69.gif"
-                 width="313" height="428" alt="Girl has dropped her ice cream.">
+        <div class="col-sm-4">
+            {{ include('modules/svg.html.twig') }}
         </div>
     </div>
 </div>
 {% block content %}{% endblock %}
-{{ include('footer-body.html.twig') }}
+{{ include('modules/footer-body.html.twig') }}
 </body>
 </html>
