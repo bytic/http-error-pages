@@ -3,7 +3,6 @@
 namespace ByTIC\HttpErrorPages\Composer;
 
 use ByTIC\HttpErrorPages\Generator\Compiler;
-use ByTIC\HttpErrorPages\Generator\Config;
 use Composer\Script\Event;
 use Composer\Installer\PackageEvent;
 
@@ -13,11 +12,17 @@ use Composer\Installer\PackageEvent;
  */
 class ScriptHandler
 {
+    /**
+     * @param Event $event
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public static function build(Event $event)
     {
         $terminal = $event->getIO();
 
-        Config::initFromComposer($event->getComposer());
+        ExtraParser::handle($event->getComposer());
 
         $pages = Compiler::generate();
         foreach ($pages as $code => $path) {

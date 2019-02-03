@@ -3,7 +3,6 @@
 namespace ByTIC\HttpErrorPages\Generator;
 
 use ByTIC\HttpErrorPages\Utility\Path;
-use Composer\Composer;
 
 /**
  * Class Config
@@ -50,26 +49,6 @@ class Config
     public static function set($name, $value)
     {
         static::instance()->setData($name, $value);
-    }
-
-    /**
-     * @param Composer $composer
-     */
-    public static function initFromComposer($composer)
-    {
-        $extras = $composer->getPackage()->getExtra();
-        if (isset($extras['http-error-pages'])) {
-            foreach ($extras['http-error-pages'] as $name => $value) {
-                switch ($name) {
-                    case 'dist_path':
-                        $installationManager = $composer->getInstallationManager();
-                        static::set($name, $installationManager->getInstallPath($composer->getPackage()) . $value);
-                        break;
-                    default:
-                        static::set($name, $value);
-                }
-            }
-        }
     }
 
     /**
