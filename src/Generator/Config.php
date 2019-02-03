@@ -59,7 +59,7 @@ class Config
     {
         $extras = $composer->getPackage()->getExtra();
         if (isset($extras['http-error-pages'])) {
-            foreach ($extras as $name => $value) {
+            foreach ($extras['http-error-pages'] as $name => $value) {
                 switch ($name) {
                     case 'dist_path':
                         $installationManager = $composer->getInstallationManager();
