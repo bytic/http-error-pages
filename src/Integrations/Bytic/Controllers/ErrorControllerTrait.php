@@ -27,4 +27,9 @@ trait ErrorControllerTrait
     {
         return $this->respondWithHttpErrorCode(403);
     }
+
+    protected function afterAction()
+    {
+        // IGNORE AfterAction to not overwrite content
+    }
 }

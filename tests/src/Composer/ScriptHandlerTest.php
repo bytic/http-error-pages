@@ -3,6 +3,7 @@
 namespace ByTIC\HttpErrorPages\Tests\Composer;
 
 use ByTIC\HttpErrorPages\Composer\ScriptHandler;
+use ByTIC\HttpErrorPages\Generator\Compiler;
 use ByTIC\HttpErrorPages\Tests\AbstractTest;
 use ByTIC\HttpErrorPages\Utility\Path;
 
@@ -19,16 +20,13 @@ class ScriptHandlerTest extends AbstractTest
             unlink($filePath);
         }
 
-        $pages = [
-            200 => Path::dist('/200.html'),
-            404 => Path::dist('/404.html'),
-        ];
+        $pages = Compiler::generate();
 
         ScriptHandler::savePathsToConfig($pages);
 
         $pagesRequired = require_once $filePath;
 
         self::assertIsArray($pagesRequired);
-        self::assertSame($pagesRequired[200], $pages[200]);
+        self::assertSame($pagesRequired[400], $pages[400]);
     }
 }
