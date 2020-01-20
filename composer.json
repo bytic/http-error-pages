@@ -18,7 +18,7 @@
   "autoload-dev": {
     "psr-4": {
       "ByTIC\\HttpErrorPages\\Tests\\": "tests/src",
-      "ByTIC\\HttpErrorPages\\Tests\\Fixtures": "tests/fixtures"
+      "ByTIC\\HttpErrorPages\\Tests\\Fixtures\\": "tests/fixtures"
     }
   },
   "require": {
