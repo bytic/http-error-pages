@@ -15,7 +15,9 @@ class ScriptHandlerTest extends AbstractTest
     public function test_savePathsToConfig()
     {
         $filePath = Path::config('/installed.php');
-        unlink($filePath);
+        if (file_exists($filePath)) {
+            unlink($filePath);
+        }
 
         $pages = [
             200 => Path::dist('/200.html'),
