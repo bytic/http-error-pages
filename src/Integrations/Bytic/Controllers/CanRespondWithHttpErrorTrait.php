@@ -23,9 +23,11 @@ trait CanRespondWithHttpErrorTrait
         $response->setStatusCode($code);
 
         $path = Path::config( '/installed.php');
-        $pages = require $path;
-        $content = file_get_contents($pages[$code]);
-        $response->setContent($content);
+        if (file_exists($path)) {
+            $pages = require $path;
+            $content = file_get_contents($pages[$code]);
+            $response->setContent($content);
+        }
 
         return $response;
     }
