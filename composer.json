@@ -17,7 +17,8 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "ByTIC\\HttpErrorPages\\Tests\\": "tests/"
+      "ByTIC\\HttpErrorPages\\Tests\\": "tests/src",
+      "ByTIC\\HttpErrorPages\\Tests\\Fixtures": "tests/fixtures"
     }
   },
   "require": {
@@ -26,6 +27,7 @@
     "twig/twig": "^2.0"
   },
   "require-dev": {
+    "bytic/controllers": "^0.9|^1.0",
     "phpunit/phpunit": "^7.2",
     "mockery/mockery": "^1.1"
   },

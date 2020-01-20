@@ -3,8 +3,8 @@
 namespace ByTIC\HttpErrorPages\Composer;
 
 use ByTIC\HttpErrorPages\Generator\Compiler;
+use ByTIC\HttpErrorPages\Utility\Path;
 use Composer\Script\Event;
-use Composer\Installer\PackageEvent;
 
 /**
  * Class ScriptHandler
@@ -27,10 +27,23 @@ class ScriptHandler
         $pages = Compiler::generate();
         foreach ($pages as $code => $path) {
             $message = '..[' . $code . ']';
-            $message .= $path ? ' generated path ['. $path . ']': ' not generated';
+            $message .= $path ? ' generated path [' . $path . ']' : ' not generated';
             $terminal->write($message);
         }
 
+        static::savePathsToConfig($pages);
+
         $terminal->write(' ... <info>Files generated</info>');
+    }
+
+    /**
+     * @param $pages
+     */
+    public static function savePathsToConfig($pages)
+    {
+        $file = Path::config('/installed.php');
+
+        $content = '<?php return ' . var_export($pages, true) . ';';
+        file_put_contents($file, $content);
     }
 }

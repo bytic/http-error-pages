@@ -2,14 +2,14 @@
 
 namespace ByTIC\HttpErrorPages\Tests\Generator;
 
+use ByTIC\HttpErrorPages\Tests\AbstractTest;
 use ByTIC\HttpErrorPages\Generator\Config;
-use PHPUnit\Framework\TestCase;
 
 /**
  * Class ConfigTest
  * @package ByTIC\HttpErrorPages\Tests\Generator
  */
-class ConfigTest extends TestCase
+class ConfigTest extends AbstractTest
 {
     public static function testSet()
     {
