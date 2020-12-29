@@ -25,10 +25,13 @@ class ScriptHandler
         ExtraParser::handle($event->getComposer());
 
         $pages = Compiler::generate();
+        $basepath = dirname(current($pages));
+        $terminal->write(' ... <info>BasePath: ['.$basepath.']</info>');
         foreach ($pages as $code => $path) {
-            $message = '..[' . $code . ']';
-            $message .= $path ? ' generated path [' . $path . ']' : ' not generated';
-            $terminal->write($message);
+            $message = ' [' . $code;
+            $message .= ' '. ($path ? '✅' : '❌');
+            $message .= ']';
+            $terminal->write($message, false);
         }
 
         static::savePathsToConfig($pages);

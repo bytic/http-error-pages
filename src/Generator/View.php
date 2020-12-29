@@ -1,11 +1,8 @@
-<?php
+<?php /** @noinspection PhpUndefinedClassInspection */
 
 namespace ByTIC\HttpErrorPages\Generator;
 
 use ByTIC\HttpErrorPages\Utility\Path;
-use Twig_Environment;
-use Twig_Extension_Debug;
-use Twig_Loader_Filesystem;
 
 /**
  * Class View
@@ -14,7 +11,7 @@ use Twig_Loader_Filesystem;
 class View
 {
     /**
-     * @var null|Twig_Environment
+     * @var null|\Twig_Environment
      */
     protected $engine = null;
 
@@ -53,12 +50,25 @@ class View
 
     protected function initEngine()
     {
-        $loader = new Twig_Loader_Filesystem(
+        $loaderClass = (class_exists('Twig_Loader_Filesystem'))
+            ? \Twig_Loader_Filesystem::class
+            : \Twig\Loader\FilesystemLoader::class;
+
+        $loader = new $loaderClass(
             [Path::views()],
             Path::views()
         );
-        $engine = new Twig_Environment($loader, ['debug' => true]);
-        $engine->addExtension(new Twig_Extension_Debug());
+
+        $engineClass = (class_exists('Twig_Environment'))
+            ? \Twig_Environment::class
+            : \Twig\Environment::class;
+
+        $engine = new $engineClass($loader, ['debug' => true]);
+
+        $debugClass = (class_exists('Twig_Extension_Debug'))
+            ? \Twig_Extension_Debug::class
+            : \Twig\Extension\DebugExtension::class;
+        $engine->addExtension(new $debugClass());
         $this->engine = $engine;
     }
 
