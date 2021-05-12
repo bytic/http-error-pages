@@ -43,7 +43,7 @@ class Compiler
         $path = Config::distPath('/' . $code . '.html');
         file_put_contents(
             $path,
-            View::render('/pages/' . $code . '.html.twig', static::generateForCodeVariables($code))
+            View::render('pages/' . $code . '.html.twig', static::generateForCodeVariables($code))
         );
 
         return $path;
